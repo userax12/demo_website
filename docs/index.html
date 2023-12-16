@@ -6,12 +6,34 @@
     <title>demo website</title>
 </head>
 <body>
-    <div>
+    <style>
+        .headline {
+            padding: 96px;
+            background-color: black;
+            color: white;
+            font-size: 48px;
+            padding-bottom: 16px;
+            text-transform: capitalize;
+        }
+        .secondary-headline {
+            padding: 96px;
+            background-color: black;
+            padding-top: 0px;
+        }
+        .secondary-headline > .text {
+            background-color: #d7b119;
+            font-size: 36px;
+            padding: 16px;
+        }
+    </style>
+    <div class="headline">
         this is a demo website.
     </div>
-    <div>
-        introducing creating a simple personal website
-        using github and visual studio code.
+    <div class="secondary-headline">
+        <div class="text">
+            Introducing creating a simple personal website
+            using github and visual studio code.
+        </div>
     </div>
 </body>
 </html>
