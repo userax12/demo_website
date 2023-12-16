@@ -62,7 +62,7 @@
                         if (xhr.readyState === xhr.DONE) {
                             if (xhr.status === 200) {
                                 // console.log(xhr.response);
-                                container.querySelector("#article-" + article.number + " > .text")[0].innerText = xhr.responseText;
+                                container.querySelector("#article-" + article.number + " > .text").innerText = xhr.responseText;
                             }
                         }
                     };
