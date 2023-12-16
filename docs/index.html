@@ -41,26 +41,28 @@
 
             const container = document.getElementById("articles");
 
-            for (article of articles) {
-                var xhr = new XMLHttpRequest();
-                xhr.open("GET", article.route, true);
+            for (const article of articles) {
+                (function (article) {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("GET", article.route, true);
 
-                // If specified, responseType must be empty string or "text"
-                xhr.responseType = "text";
+                    // If specified, responseType must be empty string or "text"
+                    xhr.responseType = "text";
 
-                xhr.onload = function () {
-                    if (xhr.readyState === xhr.DONE) {
-                        if (xhr.status === 200) {
-                            // console.log(xhr.response);
-                            let div = document.createElement("div");
-                            div.classList = ["article"];
-                            div.innerHTML = "<div>" + article.title + "</div><div>" + xhr.responseText + "</div>";
-                            container.append(div);
+                    xhr.onload = function () {
+                        if (xhr.readyState === xhr.DONE) {
+                            if (xhr.status === 200) {
+                                // console.log(xhr.response);
+                                let div = document.createElement("div");
+                                div.classList = ["article"];
+                                div.innerHTML = "<div>" + article.title + "</div><div>" + xhr.responseText + "</div>";
+                                container.append(div);
+                            }
                         }
-                    }
-                };
+                    };
 
-                xhr.send();
+                    xhr.send();
+                })(article);
             }
         }
     </script>
