@@ -48,7 +48,7 @@
                         // console.log(xhr.response);
                         let div = document.createElement("div");
                         div.classList = ["article"];
-                        div.innerHTML = "<div>" + article.title + "</div><div>" + responseText + "</div>";
+                        div.innerHTML = "<div>" + article.title + "</div><div>" + xhr.responseText + "</div>";
                         container.append(div);
                     }
                 }
