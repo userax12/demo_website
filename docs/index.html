@@ -41,7 +41,16 @@
 
             const container = document.getElementById("articles");
 
-            for (const article of articles) {
+            let counter = 1;
+
+            for (let article of articles) {
+                article.number = counter++;
+                let div = document.createElement("div");
+                div.classList = ["article"];
+                div.id = "article-" + article.number;
+                div.innerHTML = "<div>" + article.title + "</div><div class='text'></div>";
+                container.append(div);
+
                 (function (article) {
                     var xhr = new XMLHttpRequest();
                     xhr.open("GET", article.route, true);
@@ -53,10 +62,7 @@
                         if (xhr.readyState === xhr.DONE) {
                             if (xhr.status === 200) {
                                 // console.log(xhr.response);
-                                let div = document.createElement("div");
-                                div.classList = ["article"];
-                                div.innerHTML = "<div>" + article.title + "</div><div>" + xhr.responseText + "</div>";
-                                container.append(div);
+                                container.getElementById("article-" + article.number).querySelector(".text")[0].innerText = xhr.responseText;
                             }
                         }
                     };
