@@ -25,7 +25,38 @@
             font-size: 36px;
             padding: 16px;
         }
+        .article {
+            margin: 16px;
+        }
     </style>
+    <script src="index.js"></script>
+    <script>
+        const articles = window.index;
+
+        const container = document.getElementById("articles");
+
+        for (article of articles) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", article.route, true);
+
+            // If specified, responseType must be empty string or "text"
+            xhr.responseType = "text";
+
+            xhr.onload = function () {
+                if (xhr.readyState === xhr.DONE) {
+                    if (xhr.status === 200) {
+                        // console.log(xhr.response);
+                        let div = document.createElement("div");
+                        div.classList = ["article"];
+                        div.innerHTML = "<div>" + article.title + "</div><div>" + responseText + "</div>";
+                        container.append(div);
+                    }
+                }
+            };
+
+            xhr.send();
+        }
+    </script>
     <div class="headline">
         this is a demo website.
     </div>
@@ -35,5 +66,6 @@
             using github and visual studio code.
         </div>
     </div>
+    <div id="articles"></div>
 </body>
 </html>
