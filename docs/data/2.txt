@@ -1,1 +1,1 @@
-this is article 2
+Step 2, You need to know how to create an index.html file and modify it and commit the changes and sync with GitHub.

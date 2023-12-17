@@ -1,1 +1,1 @@
-this is article 1
+Step 1, you need a GitHub account. You will use GitHub to host your personal website.

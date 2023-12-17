@@ -1,0 +1,1 @@
+Step 4, Now you have been familiar with AJAX. In this lesson, You will learn how to use button and onclick to open an article (AJAX is also used). You will also use a modal to show an article. And you will also learn what is encapsulation and what is a callback function.

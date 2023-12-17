@@ -1,0 +1,1 @@
+Step 3, Now you have your index.html. You can use AJAX to load your articles and preview it on the homepage.
