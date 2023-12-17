@@ -43,6 +43,8 @@
         }
         .modal {
             position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             min-height: 100vh;
             background-color: white;
@@ -52,8 +54,21 @@
         .modal.opened {
             display: block;
         }
+        .modal.opened > .title {
+            background: black;
+            color: white;
+            padding: 16px;
+            font-size: 48px;
+        }
+        .modal.opend > .text {
+            padding: 32px;
+            font-size: 18px;
+        }
         body.modal-opened {
             overflow: hidden;
+        }
+        .float-right {
+            float: right;
         }
     </style>
     <script src="index.js"></script>
@@ -75,16 +90,26 @@
 
         function openArticle (number) {
             const articles = window.index;
-            const article = articles[number];
-            const modal = document.getElementsByClassName("modal")[0];
-            if (modal != undefined) {
-                modal.classList.add("opened");
-                document.body.classList.add("modal-opened");
-                ajax(article.route, function(text) {
-                    modal.innerHTML = "<div>" + article.title + "</div>"
-                        + "<div class='text'>" + text + "</div>";
-                });
+            const article = articles[number - 1];
+            if (article != undefined) {
+                const modal = document.getElementsByClassName("modal")[0];
+                if (modal != undefined) {
+                    modal.classList.add("opened");
+                    modal.innerHTML = "<div class='title'>" + article.title
+                        + "<button class='float-right' onclick='closeModal()'>Close</button></div>";
+                    document.body.classList.add("modal-opened");
+                    ajax(article.route, function(text) {
+                        modal.innerHTML += "<div class='text'>" + text + "</div>";
+                    });
+                }
             }
+        }
+
+        function closeModal () {
+            const modal = document.getElementsByClassName("modal")[0];
+            modal.classList.remove("opened");
+            modal.innerHTML = "";
+            document.body.classList.remove("modal-opened");
         }
 
         window.onload = function () {
