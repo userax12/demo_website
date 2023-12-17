@@ -72,3 +72,17 @@ body.modal-opened {
 .float-right {
     float: right;
 }
+
+button.close {
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 900;
+    text-transform: capitalize;
+    background-color: white;
+    border: 0;
+    border-radius: 0;
+}
+
+button.close:hover {
+    background-color: #d7b119;
+}

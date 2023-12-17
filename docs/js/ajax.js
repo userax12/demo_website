@@ -21,7 +21,7 @@ function openArticle(number) {
         if (modal != undefined) {
             modal.classList.add("opened");
             modal.innerHTML = "<div class='title'>" + article.title
-                + "<button class='float-right' onclick='closeModal()'>Close</button></div>";
+                + "<button class='close float-right' onclick='closeModal()'>Close</button></div>";
             document.body.classList.add("modal-opened");
             ajax(article.route, function (text) {
                 modal.innerHTML += "<div class='text'>" + text + "</div>";
