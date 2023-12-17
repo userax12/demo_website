@@ -41,9 +41,50 @@
             font-size: 1.5rem;
             font-weight: 900;
         }
+        .modal {
+            position: fixed;
+            width: 100%;
+            min-height: 100vh;
+            background-color: white;
+            display: none;
+            z-index: 100;
+        }
+        .modal.opened {
+            display: block;
+        }
+        body.modal-opened {
+            overflow: hidden;
+        }
     </style>
     <script src="index.js"></script>
     <script>
+        function ajax (url, callback) {
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET", url, true);
+            // If specified, responseType must be empty string or "text"
+            xhr.responseType = "text";
+            xhr.onload = function () {
+                if (xhr.readyState === xhr.DONE) {
+                    if (xhr.status === 200) {
+                        callback(xhr.responseText, xhr.response);
+                    }
+                }
+            };
+            xhr.send();
+        }
+
+        function openArticle (number) {
+            const articles = window.index;
+            const article = articles[number];
+            const modal = document.getElementsByClassName("modal");
+            modal.classList.add("open");
+            document.body.add("modal-opened");
+            ajax(article.route, function(text) {
+                modal.innerHTML = "<div>" + article.title + "</div>"
+                    + "<div class='text'>" + text + "</div>";
+            });
+        }
+
         window.onload = function () {
             const articles = window.index;
 
@@ -57,6 +98,7 @@
                 div.classList = ["article"];
                 div.id = "article-" + article.number;
                 div.innerHTML = "<div>" + article.title + "</div><div class='text'></div>";
+                div.setAttribute("onclick", "openArticle('" + article.number + "')");
                 container.append(div);
 
                 (function (article) {
@@ -80,6 +122,7 @@
             }
         }
     </script>
+    <div class="modal"></div>
     <div class="headline">
         this is a demo website.
     </div>
