@@ -78,7 +78,7 @@
             const article = articles[number];
             const modal = document.getElementsByClassName("modal")[0];
             if (modal != undefined) {
-                modal.classList.add("open");
+                modal.classList.add("opened");
                 document.body.add("modal-opened");
                 ajax(article.route, function(text) {
                     modal.innerHTML = "<div>" + article.title + "</div>"
