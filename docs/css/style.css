@@ -1,0 +1,74 @@
+.headline {
+    padding: 96px;
+    background-color: black;
+    color: white;
+    font-size: 48px;
+    padding-bottom: 16px;
+    text-transform: capitalize;
+}
+
+.secondary-headline {
+    padding: 96px;
+    background-color: black;
+    padding-top: 0px;
+}
+
+.secondary-headline>.text {
+    background-color: #d7b119;
+    font-size: 36px;
+    padding: 16px;
+}
+
+.articles {
+    background-color: #d7b119;
+    padding: 16px;
+}
+
+.article {
+    margin: 32px;
+    padding: 32px;
+    border: 6px solid black;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.article> :first-child {
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: white;
+    display: none;
+    z-index: 100;
+}
+
+.modal.opened {
+    display: block;
+}
+
+.modal.opened>.title {
+    background: black;
+    color: white;
+    padding: 16px;
+    font-size: 48px;
+}
+
+.modal.opened>.text {
+    padding: 32px;
+    font-size: 18px;
+}
+
+body.modal-opened {
+    overflow: hidden;
+}
+
+.float-right {
+    float: right;
+}
