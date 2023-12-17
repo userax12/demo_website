@@ -33,6 +33,11 @@
     margin-right: auto;
 }
 
+.article:hover {
+    background: black;
+    color: white;
+}
+
 .article> :first-child {
     font-size: 1.5rem;
     font-weight: 900;
