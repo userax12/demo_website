@@ -79,7 +79,7 @@
             const modal = document.getElementsByClassName("modal")[0];
             if (modal != undefined) {
                 modal.classList.add("opened");
-                document.body.add("modal-opened");
+                document.body.classList.add("modal-opened");
                 ajax(article.route, function(text) {
                     modal.innerHTML = "<div>" + article.title + "</div>"
                         + "<div class='text'>" + text + "</div>";
