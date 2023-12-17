@@ -76,13 +76,15 @@
         function openArticle (number) {
             const articles = window.index;
             const article = articles[number];
-            const modal = document.getElementsByClassName("modal");
-            modal.classList.add("open");
-            document.body.add("modal-opened");
-            ajax(article.route, function(text) {
-                modal.innerHTML = "<div>" + article.title + "</div>"
-                    + "<div class='text'>" + text + "</div>";
-            });
+            const modal = document.getElementsByClassName("modal")[0];
+            if (modal != undefined) {
+                modal.classList.add("open");
+                document.body.add("modal-opened");
+                ajax(article.route, function(text) {
+                    modal.innerHTML = "<div>" + article.title + "</div>"
+                        + "<div class='text'>" + text + "</div>";
+                });
+            }
         }
 
         window.onload = function () {
