@@ -53,20 +53,8 @@ window.onload = function () {
         div.setAttribute("onclick", "openArticle('" + article.number + "')");
         container.append(div);
 
-        (function (article) {
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", article.route, true);
-            // If specified, responseType must be empty string or "text"
-            xhr.responseType = "text";
-            xhr.onload = function () {
-                if (xhr.readyState === xhr.DONE) {
-                    if (xhr.status === 200) {
-                        // console.log(xhr.response);
-                        container.querySelector("#article-" + article.number + " > .text").innerText = xhr.responseText;
-                    }
-                }
-            };
-            xhr.send();
-        })(article);
+        ajax(article.route, function(responseText) {
+            container.querySelector("#article-" + article.number + " > .text").innerText = responseText;
+        });
     }
 }
