@@ -25,13 +25,21 @@
             font-size: 36px;
             padding: 16px;
         }
+        .articles {
+            background-color: #d7b119;
+            padding: 16px;
+        }
         .article {
             margin: 32px;
             padding: 32px;
-            border: 1rem solid #d7b119;
+            border: 6px solid black;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .article > :first-child {
             font-size: 1.5rem;
+            font-weight: 900;
         }
     </style>
     <script src="index.js"></script>
@@ -81,6 +89,6 @@
             using github and visual studio code.
         </div>
     </div>
-    <div id="articles"></div>
+    <div class="articles" id="articles"></div>
 </body>
 </html>
