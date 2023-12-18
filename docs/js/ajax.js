@@ -20,8 +20,10 @@ function openArticle(number) {
         const modal = document.getElementsByClassName("modal")[0];
         if (modal != undefined) {
             modal.classList.add("opened");
-            modal.innerHTML = "<div class='title'>" + article.title
-                + "<button class='close float-right' onclick='closeModal()'>Close</button></div>";
+            modal.innerHTML = "<div class='scroll'>" +
+                "<div class='title'>" + article.title +
+                "<button class='close float-right' onclick='closeModal()'>Close</button></div>" +
+                "<div class='article-content'></div></div>";
             document.body.classList.add("modal-opened");
             ajax(article.route, function (text) {
                 let content = "";
@@ -32,7 +34,7 @@ function openArticle(number) {
                     }
                     content += "<pre class=\"line\">" + parsedLine + "</pre>";
                 }
-                modal.innerHTML += "<div class='article-content'>" + content + "</div>";
+                modal.querySelector(".article-content").innerHTML = content;
             });
         }
     }
