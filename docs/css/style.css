@@ -74,8 +74,12 @@
     display: block;
 }
 
-.modal.opened>.scroll {
+.modal.opened:has(.scroll) {
     overflow: scroll;
+}
+
+.modal.opened>.scroll {
+    position: absolute;
 }
 
 .modal.opened>.scroll>.title {
