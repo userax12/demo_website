@@ -54,7 +54,9 @@ function parse(line) {
                 labelInfo.labelClose > labelInfo.labelOpenEnd &&
                 labelInfo.labelCloseEnd > labelInfo.labelClose) {
                     i = j;
-                    if (labelInfo.labelOpen + 1 < labelInfo.labelOpenEnd) {
+                    if (labelInfo.labelOpen + 1 < labelInfo.labelOpenFirstSpace) {
+                        labelInfo.tagName = line.substring(labelInfo.labelOpen + 1, labelInfo.labelOpenFirstSpace);
+                    } else if (labelInfo.labelOpen + 1 < labelInfo.labelOpenEnd) {
                         labelInfo.tagName = line.substring(labelInfo.labelOpen + 1, labelInfo.labelOpenEnd);
                     } else {
                         labelInfo.tagName = "";

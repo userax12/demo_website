@@ -26,10 +26,7 @@ function openArticle(number) {
             ajax(article.route, function (text) {
                 let content = "";
                 for (let line of text.split("\n")) {
-                    line = parse(line);
-                    line = line.replaceAll("&lt;", "<");
-                    line = line.replaceAll("&amp;", "&");
-                    content += "<pre class=\"line\">" + line + "</pre>";
+                    content += "<pre class=\"line\">" + parse(line) + "</pre>";
                 }
                 modal.innerHTML += "<div class='article-content'>" + content + "</div>";
             });
