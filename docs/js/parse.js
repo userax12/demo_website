@@ -61,22 +61,25 @@ function parse(line) {
                     }
                     if (labelInfo.labelOpenFirstSpace && labelInfo.labelOpenFirstSpace < labelInfo.labelOpenEnd) {
                         labelInfo.ogAttributes = line.substring(labelInfo.labelOpenFirstSpace + 1, labelInfo.labelOpenEnd).split(" ");
-                        for (let i in labelInfo.ogAttributes) {
-                            const pair = labelInfo.ogAttributes[i].split("=");
-                            labelInfo.attributes[i] = {
-                                "key": pair[0],
-                                "value": pair[1]
-                            };
-                        }
-                        let styleValue = "";
-                        for (let attribute of labelInfo.attributes) {
-                            if (attribute.key == "color") {
-                                styleValue += "color:" + attribute.value + ";";
+                        if (labelInfo.ogAttributes.length) {
+                            labelInfo.attributes = [];
+                            for (let i in labelInfo.ogAttributes) {
+                                const pair = labelInfo.ogAttributes[i].split("=");
+                                labelInfo.attributes.push({
+                                    "key": pair[0],
+                                    "value": pair[1]
+                                });
                             }
-                        }
-                        labelInfo.attributesLine = "";
-                        if (styleValue.length) {
-                            labelInfo.attributesLine += "style=\"" + styleValue + "\"";
+                            let styleValue = "";
+                            for (let attribute of labelInfo.attributes) {
+                                if (attribute.key == "color") {
+                                    styleValue += "color:" + attribute.value + ";";
+                                }
+                            }
+                            labelInfo.attributesLine = "";
+                            if (styleValue.length) {
+                                labelInfo.attributesLine += "style=\"" + styleValue + "\"";
+                            }
                         }
                     }
                     if (labelInfo.labelOpenEnd + 1 < labelInfo.labelClose) {
