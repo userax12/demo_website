@@ -20,10 +20,10 @@ function openArticle(number) {
         const modal = document.getElementsByClassName("modal")[0];
         if (modal != undefined) {
             modal.classList.add("opened");
-            modal.innerHTML = "<div class='scroll'>" +
+            modal.innerHTML = "<div class='scroll'><div class='centered'>" +
                 "<div class='title'>" + article.title +
                 "<button class='close float-right' onclick='closeModal()'>Close</button></div>" +
-                "<div class='article-content'></div></div>";
+                "<div class='article-content'></div></div></div>";
             document.body.classList.add("modal-opened");
             ajax(article.route, function (text) {
                 let content = "";
