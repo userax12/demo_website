@@ -24,29 +24,33 @@ function parse(line) {
                 }
                 if (line[j] == " ") {
                     labelInfo["labelOpenFirstSpace"] = j;
+                    break;
                 }
             }
             // 3 labelOpenEnd
             for (;j < line.length; ++j) {
                 if (line[j] == ">") {
                     labelInfo["labelOpenEnd"] = j;
+                    break;
                 }
             }
             // 4 labelClose
             for (;j < line.length; ++j) {
                 if (line[j] == "<" && line[j + 1] == "/") {
                     labelInfo["labelClose"] = j;
+                    break;
                 }
             }
             // 5 labelCloseEnd
             for (;j < line.length; ++j) {
                 if (line[j] == ">") {
                     labelInfo["labelCloseEnd"] = j;
+                    break;
                 }
             }
             // check
             if (labelInfo.labelOpen >= 0 &&
-                labelInfo.labelOpenEnd > labelOpen &&
+                labelInfo.labelOpenEnd > labelInfo.labelOpen &&
                 labelInfo.labelClose > labelInfo.labelOpenEnd &&
                 labelInfo.labelCloseEnd > labelInfo.labelClose) {
                     i = j;
