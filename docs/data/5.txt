@@ -1,0 +1,5 @@
+Step 5, we add styles in open article page to show the content of an article more properly. We set the maximum width of the content of an article 800 pixels and we show it horizontally centered.
+And we shall separate each lines by the label &lt;pre>.
+And we add the function parse to parse the text of the article to recognize the labels and replace them with HTML DOM elements. With this function added, we will no longer use &lt; in the text. to show &lt; in the text, we use &amp;lt; in stead of &lt; itself.
+
+With labels recognized, to display text in <span color=red>red</span>, we use &lt;span color=red>&lt;/span> to wrap the text that we'd like to display in red.

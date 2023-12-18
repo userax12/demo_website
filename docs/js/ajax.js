@@ -24,7 +24,14 @@ function openArticle(number) {
                 + "<button class='close float-right' onclick='closeModal()'>Close</button></div>";
             document.body.classList.add("modal-opened");
             ajax(article.route, function (text) {
-                modal.innerHTML += "<div class='text'>" + text + "</div>";
+                let content = "";
+                for (let line of text.split("\n")) {
+                    line = parse(line);
+                    line = line.replaceAll("&lt;", "<");
+                    line = line.replaceAll("&amp;", "&");
+                    content += "<pre class=\"line\">" + line + "</pre>";
+                }
+                modal.innerHTML += "<div class='article-content'>" + content + "</div>";
             });
         }
     }
