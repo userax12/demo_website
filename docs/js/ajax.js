@@ -26,7 +26,11 @@ function openArticle(number) {
             ajax(article.route, function (text) {
                 let content = "";
                 for (let line of text.split("\n")) {
-                    content += "<pre class=\"line\">" + parse(line) + "</pre>";
+                    let parsedLine = parse(line);
+                    if (parsedLine == "") {
+                        parsedLine = "<br>";
+                    }
+                    content += "<pre class=\"line\">" + parsedLine + "</pre>";
                 }
                 modal.innerHTML += "<div class='article-content'>" + content + "</div>";
             });
@@ -57,7 +61,7 @@ window.onload = function () {
         div.setAttribute("onclick", "openArticle('" + article.number + "')");
         container.append(div);
 
-        ajax(article.route, function(responseText) {
+        ajax(article.route, function (responseText) {
             container.querySelector("#article-" + article.number + " > .text").innerText = responseText;
         });
     }

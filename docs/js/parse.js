@@ -76,6 +76,11 @@ function parse(line) {
                             for (let attribute of labelInfo.attributes) {
                                 if (attribute.key == "color") {
                                     styleValue += "color:" + attribute.value + ";";
+                                } else if (attribute.key == "backgroundColor") {
+                                    styleValue += "background-color:" + attribute.value + ";";
+                                } else if (attribute.key == "border") {
+                                    styleValue += "border:" + attribute.value + " solid gray;";
+                                    styleValue += "border-radius:3px;";
                                 }
                             }
                             labelInfo.attributesLine = "";
