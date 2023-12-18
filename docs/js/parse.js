@@ -62,7 +62,7 @@ function parse(line) {
                     if (labelInfo.labelOpenFirstSpace && labelInfo.labelOpenFirstSpace < labelInfo.labelOpenEnd) {
                         labelInfo.ogAttributes = line.substring(labelInfo.labelOpenFirstSpace + 1, labelInfo.labelOpenEnd).split(" ");
                         for (let i in labelInfo.ogAttributes) {
-                            const pair = labelInfo.ogAttributes[i].split["="];
+                            const pair = labelInfo.ogAttributes[i].split("=");
                             labelInfo.attributes[i] = {
                                 "key": pair[0],
                                 "value": pair[1]
