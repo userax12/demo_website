@@ -13,30 +13,37 @@ function ajax(url, callback) {
     xhr.send();
 }
 
+function openFile(filename, url) {
+    if (url == undefined) {
+        url = filename;
+    }
+    const modal = document.getElementsByClassName("modal")[0];
+    if (modal != undefined) {
+        modal.classList.add("opened");
+        modal.innerHTML = "<div class='scroll'><div class='centered'>" +
+            "<div class='title'>" + filename +
+            "<button class='close float-right' onclick='closeModal()'>Close</button></div>" +
+            "<div class='article-content'></div></div></div>";
+        document.body.classList.add("modal-opened");
+        ajax(url, function (text) {
+            let content = "";
+            for (let line of text.split("\n")) {
+                let parsedLine = parse(line);
+                if (parsedLine == "") {
+                    parsedLine = "<br>";
+                }
+                content += "<pre class=\"line\">" + parsedLine + "</pre>";
+            }
+            modal.querySelector(".article-content").innerHTML = content;
+        });
+    }
+}
+
 function openArticle(number) {
     const articles = window.index;
     const article = articles[number - 1];
     if (article != undefined) {
-        const modal = document.getElementsByClassName("modal")[0];
-        if (modal != undefined) {
-            modal.classList.add("opened");
-            modal.innerHTML = "<div class='scroll'><div class='centered'>" +
-                "<div class='title'>" + article.title +
-                "<button class='close float-right' onclick='closeModal()'>Close</button></div>" +
-                "<div class='article-content'></div></div></div>";
-            document.body.classList.add("modal-opened");
-            ajax(article.route, function (text) {
-                let content = "";
-                for (let line of text.split("\n")) {
-                    let parsedLine = parse(line);
-                    if (parsedLine == "") {
-                        parsedLine = "<br>";
-                    }
-                    content += "<pre class=\"line\">" + parsedLine + "</pre>";
-                }
-                modal.querySelector(".article-content").innerHTML = content;
-            });
-        }
+        openFile(article.title, article.route);
     }
 }
 

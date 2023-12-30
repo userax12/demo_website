@@ -109,6 +109,15 @@
     white-space: pre-wrap;
 }
 
+.modal.opened .article-content pre.line .openfile-link {
+    cursor: pointer;
+    color: #3442e4;
+}
+
+.modal.opened .article-content pre.line .openfile-link:hover {
+    text-decoration: underline;
+}
+
 body.modal-opened {
     overflow: hidden;
 }

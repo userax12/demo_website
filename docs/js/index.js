@@ -13,4 +13,7 @@ window.index = [{
 },{
     "title": "article five",
     "route": "data/5.txt"
+},{
+    "title": "article six",
+    "route": "data/6.txt"
 }];

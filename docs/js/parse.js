@@ -64,28 +64,28 @@ function parse(line) {
                     if (labelInfo.labelOpenFirstSpace && labelInfo.labelOpenFirstSpace < labelInfo.labelOpenEnd) {
                         labelInfo.ogAttributes = line.substring(labelInfo.labelOpenFirstSpace + 1, labelInfo.labelOpenEnd).split(" ");
                         if (labelInfo.ogAttributes.length) {
-                            labelInfo.attributes = [];
+                            labelInfo.attributes = {};
                             for (let i in labelInfo.ogAttributes) {
                                 const pair = labelInfo.ogAttributes[i].split("=");
-                                labelInfo.attributes.push({
-                                    "key": pair[0],
-                                    "value": pair[1]
-                                });
+                                labelInfo.attributes[pair[0]] = pair[1];
                             }
                             let styleValue = "";
-                            for (let attribute of labelInfo.attributes) {
-                                if (attribute.key == "color") {
-                                    styleValue += "color:" + attribute.value + ";";
-                                } else if (attribute.key == "backgroundColor") {
-                                    styleValue += "background-color:" + attribute.value + ";";
-                                } else if (attribute.key == "border") {
-                                    styleValue += "border:" + attribute.value + " solid gray;";
-                                    styleValue += "border-radius:3px;";
-                                }
+                            if (labelInfo.attributes.color) {
+                                styleValue += "color:" + labelInfo.attributes.color + ";";
+                            }
+                            if (labelInfo.attributes.backgroundColor) {
+                                styleValue += "background-color:" + labelInfo.attributes.backgroundColor + ";";
+                            }
+                            if (labelInfo.attributes.border) {
+                                styleValue += "border:" + labelInfo.attributes.border + " solid gray;";
+                                styleValue += "border-radius:3px;";
                             }
                             labelInfo.attributesLine = "";
                             if (styleValue.length) {
                                 labelInfo.attributesLine += "style=\"" + styleValue + "\"";
+                            }
+                            if (labelInfo.tagName == "link") {
+                                labelInfo.attributesLine += " class=\"openfile-link\" onclick=\"openFile('" + labelInfo.attributes.url + "')\"";
                             }
                         }
                     }
@@ -93,6 +93,9 @@ function parse(line) {
                         labelInfo.innerText = line.substring(labelInfo.labelOpenEnd + 1, labelInfo.labelClose);
                     } else {
                         labelInfo.innerText = "";
+                    }
+                    if (labelInfo.tagName == "link") {
+                        labelInfo.tagName = "span";
                     }
                     parsedLine += "<" + labelInfo.tagName + " " + labelInfo.attributesLine + ">" + labelInfo.innerText + "</" + labelInfo.tagName + ">";
             } else {
