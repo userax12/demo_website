@@ -54,13 +54,11 @@ function closeModal() {
     document.body.classList.remove("modal-opened");
 }
 
-window.onload = function () {
-    const articles = window.index;
-
+function openBook(bookName) {
+    const articles = window.books[bookName].index;
     const container = document.getElementById("articles");
-
+    container.innerHTML = "";
     let counter = 1;
-
     for (let article of articles) {
         article.number = counter++;
         let div = document.createElement("div");
@@ -74,4 +72,16 @@ window.onload = function () {
             container.querySelector("#article-" + article.number + " > .text").innerText = responseText;
         });
     }
+}
+
+window.onload = function () {
+    const container = document.getElementById("books");
+    for (const [key, value] of Object.entries(window.books)) {
+        let div = document.createElement("div");
+        div.classList.add("book");
+        div.innerText = key;
+        div.setAttribute("onclick", "openBook('" + key + "')");
+        container.append(div);
+    }
+    openBook("book-1");
 }

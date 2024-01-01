@@ -36,6 +36,39 @@
     padding-left: 16px;
 }
 
+.books-wrapper {
+    background-color: #d7b119;
+    padding-top: 2rem;
+}
+
+.books {
+    max-width: 100%;
+    width: 1000px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    overflow: scroll;
+}
+
+.books>.book {
+    width: 133px;
+    min-width: 133px;
+    max-width: 133px;
+    height: 200px;
+    padding: 2rem;
+    font-size: 2rem;
+    background-color: #d4360b;
+    border: 6px solid black;
+}
+
+.books>.book:hover {
+    background-color: black;
+    color: white;
+    border-color: #d4360b;
+}
+
 .articles {
     background-color: #d7b119;
     padding: 16px;

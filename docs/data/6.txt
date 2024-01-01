@@ -1,3 +1,0 @@
-Step 6, Add link that can jump to another page.
-
-We can write &lt;link url=data/5.txt>link text&lt;/link> to set a <link url=data/5.txt>link</link> to data/5.txt.

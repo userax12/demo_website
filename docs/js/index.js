@@ -1,19 +1,49 @@
-window.index = [{
+window.books = {
+    "book-1": {
+        "index": []
+    },
+    "book-2": {
+        "index": []
+    },
+    "book-3": {
+        "index": []
+    },
+    "book-4": {
+        "index": []
+    }
+};
+
+window.books["book-1"].index = [{
     "title": "article one",
-    "route": "data/1.txt"
+    "route": "data/book-1/1.txt"
 },{
     "title": "article two",
-    "route": "data/2.txt"
+    "route": "data/book-1/2.txt"
 },{
     "title": "article three",
-    "route": "data/3.txt"
+    "route": "data/book-1/3.txt"
 },{
     "title": "article four",
-    "route": "data/4.txt"
+    "route": "data/book-1/4.txt"
 },{
     "title": "article five",
-    "route": "data/5.txt"
+    "route": "data/book-1/5.txt"
 },{
     "title": "article six",
-    "route": "data/6.txt"
+    "route": "data/book-1/6.txt"
+}];
+
+window.books["book-2"].index = [{
+    "title": "chapter 1",
+    "route": "data/book-2/ch-1.txt"
+}];
+
+window.books["book-3"].index = [{
+    "title": "chapter 1",
+    "route": "data/book-3/ch-1.txt"
+}];
+
+window.books["book-4"].index = [{
+    "title": "chapter 1",
+    "route": "data/book-4/ch-1.txt"
 }];
