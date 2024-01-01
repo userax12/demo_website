@@ -63,7 +63,11 @@
     border: 6px solid black;
 }
 
-.books>.book:hover {
+.books>.book.opened {
+    background-color: #d7b119;
+}
+
+.books>.book:not(.opened):hover {
     background-color: black;
     color: white;
     border-color: #d4360b;

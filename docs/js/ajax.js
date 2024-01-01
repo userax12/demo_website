@@ -55,6 +55,14 @@ function closeModal() {
 }
 
 function openBook(bookName) {
+    const books = document.querySelectorAll("book");
+    for (const book of books) {
+        book.classList.remove("opened");
+        if (book.getAttribute("book-name") == bookName) {
+            book.classList.add("opened");
+        }
+    }
+
     const articles = window.books[bookName].index;
     const container = document.getElementById("articles");
     container.innerHTML = "";
@@ -80,6 +88,7 @@ window.onload = function () {
         let div = document.createElement("div");
         div.classList.add("book");
         div.innerText = key;
+        div.setAttribute("book-name", key);
         div.setAttribute("onclick", "openBook('" + key + "')");
         container.append(div);
     }
