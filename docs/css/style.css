@@ -70,7 +70,6 @@
 .books>.book:not(.opened):hover {
     background-color: black;
     color: white;
-    border-color: #d4360b;
 }
 
 .articles {
