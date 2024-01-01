@@ -39,8 +39,8 @@ function openFile(filename, url) {
     }
 }
 
-function openArticle(number) {
-    const articles = window.index;
+function openArticle(bookName, number) {
+    const articles = window.books[bookName].index;
     const article = articles[number - 1];
     if (article != undefined) {
         openFile(article.title, article.route);
@@ -65,7 +65,7 @@ function openBook(bookName) {
         div.classList = ["article"];
         div.id = "article-" + article.number;
         div.innerHTML = "<div>" + article.title + "</div><div class='text'></div>";
-        div.setAttribute("onclick", "openArticle('" + article.number + "')");
+        div.setAttribute("onclick", "openArticle('" + bookName + "','" + article.number + "')");
         container.append(div);
 
         ajax(article.route, function (responseText) {

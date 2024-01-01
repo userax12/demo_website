@@ -34,6 +34,9 @@ window.books["book-1"].index = [{
 }];
 
 window.books["book-2"].index = [{
+    "title": "preface",
+    "route": "data/book-2/preface.txt"
+},{
     "title": "chapter 1",
     "route": "data/book-2/ch-1.txt"
 }];
