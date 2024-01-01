@@ -55,7 +55,7 @@ function closeModal() {
 }
 
 function openBook(bookName) {
-    const books = document.querySelectorAll("book");
+    const books = document.querySelectorAll(".book");
     for (const book of books) {
         book.classList.remove("opened");
         if (book.getAttribute("book-name") == bookName) {
